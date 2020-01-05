@@ -8,41 +8,85 @@
 #include "my.h"
 #include "get_next_line.h"
 
-char *s_mlc(char *buffer, char *str)
+static char *temp_stat(char *str, int i)
+{
+    char *temp = malloc((READ_SIZE + 1) * sizeof(char));
+
+    i++;
+    for (int j = 0; str[i] != '\0'; i++, j++)
+        temp[j] = str[i];
+    return (temp);
+}
+
+char *s_fill(char *buffer, char *str)
 {
     int i = 0;
 
-    while (buffer[i] != '\n')// || buffer[i] != '\0')
+    buffer[READ_SIZE + 1] = '\0';
+    while (buffer[i] != '\0')
         i++;
-    str = malloc(i + 1 * sizeof(char));
+    if (buffer[i - 1] == '\n')
+        i--;
+    str = malloc((READ_SIZE + 1) * sizeof(char));
     for (int j = 0; j != i; j++)
         str[j] = buffer[j];
-    return (str);
-}
-
-char *get_next_line(int fd)
-{
-    char *buffer = malloc(READ_SIZE + 1 * sizeof(char));
-    char *str;
-
-    buffer[READ_SIZE + 1] = '\0';
-    read(fd, buffer, READ_SIZE);
-    str = s_mlc(buffer, str);
     free(buffer);
     return (str);
 }
 
-/*int main(int ac, char **av)
+char *fs_fill(char *str, char *temp)
 {
-    int fd = open(av[1], O_RDONLY);
-    char *s = get_next_line(fd);
+    char *f_str = malloc((READ_SIZE + 1) * sizeof(char));
+    int i = 0;
 
-    while (s) {
-        my_putstr(s);
-        my_putchar('\n');
-        free(s);
-        s = get_next_line(fd);
+    if (str == NULL)
+        return (temp);
+    else {
+        for (int j = 0; temp[j] != '\0'; j++, i++)
+            f_str[i] = temp[j];
+        i++;
+        for (int j = 0; str[j] != '\n'; j++, i++)
+            f_str[i] = str[j];
+        free(temp);
     }
-    close(fd);
-    return (0);
-    }*/
+    return (str);
+}
+
+char *new_str(char *str)
+{
+    char *f_str;
+    int nb = 0;
+    int nb2 = 0;
+
+    for (int i = 0; str[i] != '\0'; i++, nb++);
+    for (int j = 0; str[j] != '\n'; j++, nb2++);
+    f_str = malloc((READ_SIZE + 1) * sizeof(char));
+    for (int i = 0; str[i] != '\n'; i++)
+        f_str[i] = str[i];
+    free(str);
+    return(f_str);
+}
+
+char *get_next_line(int fd)
+{
+    char *buffer = malloc((READ_SIZE + 1) * sizeof(char));
+    char *str = 0;
+    int re = read(fd, buffer, READ_SIZE);
+    static char *temp = 0;
+
+    if (temp != 0) {
+        str = fs_fill(str, temp);
+        temp = 0;
+    }
+    else {
+        if (fd == -1 || re <= 0)
+            return (NULL);
+        str = s_fill(buffer, str);
+        for (int i = 0; str[i]; i++)
+            if (str[i] == '\n') {
+                temp = temp_stat(str, i);
+                str = new_str(str);
+            }
+    }
+    return (str);
+}
