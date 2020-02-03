@@ -5,7 +5,6 @@
 ** getnextline
 */
 
-#include "my.h"
 #include "get_next_line.h"
 
 static char *temp_stat(char *str, int i)
