@@ -78,7 +78,7 @@ char *get_next_line(int fd)
         temp = 0;
     }
     else {
-        if (fd == -1 || re <= 0)
+        if (fd == -1 || re <= 0 || buffer == NULL)
             return (NULL);
         str = s_fill(buffer, str);
         for (int i = 0; str[i]; i++)
