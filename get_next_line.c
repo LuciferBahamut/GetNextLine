@@ -63,7 +63,7 @@ char *new_str(char *str)
     for (int i = 0; str[i] != '\n'; i++)
         f_str[i] = str[i];
     free(str);
-    return(f_str);
+    return (f_str);
 }
 
 char *get_next_line(int fd)
