@@ -69,24 +69,24 @@ char *new_str(char *str)
 char *get_next_line(int fd)
 {
     static char *temp = NULL;
-    gnl_s gnl;
+    gnl_s *gnl = malloc(sizeof(gnl_s));
 
-    gnl.buffer = malloc((READ_SIZE + 1) * sizeof(char));
-    if (gnl.buffer == NULL)
+    gnl->buffer = malloc((READ_SIZE + 1) * sizeof(char));
+    if (gnl->buffer == NULL)
         return (NULL);
-    gnl.re = read(fd, gnl.buffer, READ_SIZE);
-    if (fd == -1 || gnl.re <= 0)
+    gnl->re = read(fd, gnl->buffer, READ_SIZE);
+    if (fd == -1 || gnl->re <= 0)
         return (NULL);
     if (temp != NULL) {
-        gnl.str = fs_fill(gnl.str, temp);
+        gnl->str = fs_fill(gnl->str, temp);
         temp = NULL;
     } else {
-        gnl.str = s_fill(gnl.buffer, gnl.str);
-        for (int i = 0; gnl.str[i]; i++)
-            if (gnl.str[i] == '\n') {
-                temp = temp_stat(gnl.str, i);
-                gnl.str = new_str(gnl.str);
+        gnl->str = s_fill(gnl->buffer, gnl->str);
+        for (int i = 0; gnl->str[i]; i++)
+            if (gnl->str[i] == '\n') {
+                temp = temp_stat(gnl->str, i);
+                gnl->str = new_str(gnl->str);
             }
     }
-    return (gnl.str);
+    return (gnl->str);
 }
