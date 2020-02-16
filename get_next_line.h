@@ -18,4 +18,11 @@
 #include <unistd.h>
 #include <stdio.h>
 
+typedef struct gnl
+{
+    int re;
+    char *str;
+    char *buffer;
+} gnl_s;
+
 #endif
