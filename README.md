@@ -1,5 +1,5 @@
 <h1>GetNextLine</h1>
-<h3>{EPITECH} -- First year -- fourth CPE project</h3>
+<h3>{EPITECH} -- First year -- Semester 1 -- fourth CPE project</h3>
 
 <p>1st semester CPE unit part II : Grade C</p>
 
