@@ -3,7 +3,7 @@
 
 <p>1st semester CPE unit part II : Grade C</p>
 
-<p>get_next_line_2019 -- With Crash</p>
+<p>get_next_line -- With Crash</p>
 
 <p>Result : 27,3 %</p>
   <li>Static / buffering : 0 % -- 0 / 3</li>
