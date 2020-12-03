@@ -1,16 +1,16 @@
-<h1>GetNextLine</h1>
-<h3>{EPITECH} -- First year -- Semester 1 -- fourth CPE project</h3>
+# GetNextLine</h1>
+### {EPITECH} -- First year -- Semester 1 -- fourth CPE project
 
-<p>1st semester CPE unit part II : Grade C</p>
+1st semester CPE unit part II : Grade C
 
-<p>get_next_line -- With Crash</p>
+|               Category              | Percentage | Number of tests | Crash ? |
+|:-----------------------------------:|:----------:|:---------------:|:-------:|
+|          Static / buffering         |     0 %    |      0 / 3      |    x    |
+| Basic READ_SIZE and buffer handling |   33,3 %   |      1 / 3      |    x    |
+|         Test with READ_SIZE         |     0 %    |      0 / 5      |    x    |
+|            Special cases            |    50 %    |      2 / 4      |    x    |
+|            Error handling           |    50 %    |      1 / 2      | **Yes** |
+|    Buffer manipulation (one read)   |    40 %    |      2 / 5      |    x    |
+|             **Results**             | **27,3 %** |      6 / 22     | **Yes** |
 
-<p>Result : 27,3 %</p>
-  <li>Static / buffering : 0 % -- 0 / 3</li>
-  <li>Basic READ_SIZE and buffer handling : 33,3 % -- 1 / 3</li>
-  <li>Test with READ_SIZE : 0 % -- 0 / 5</li>
-  <li>Special cases : 50 % -- 2 / 4</li>
-  <li>Error handling : 50 % -- 1 / 2 (CRASH)</li>
-  <li>Buffer manipulation (one read) : 40 % -- 2 / 5</li>
-<p></p>
-<p>Beware of -42 for Epitech students !</p>
+Beware of -42 for Epitech students !
